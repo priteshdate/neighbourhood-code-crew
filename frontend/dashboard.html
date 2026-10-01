@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Neighborhood Help — Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       1. IMPACT BANNER
+  ════════════════════════════════════════════════════════════ -->
+  <div class="impact-banner" role="banner" aria-label="Community impact stats">
+    <div class="impact-banner__inner" id="impactText">
+      Loading community stats…
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       2. TOP NAV HEADER
+  ════════════════════════════════════════════════════════════ -->
+  <nav class="topnav" aria-label="Main navigation">
+    <div class="topnav__inner container">
+
+      <!-- Brand -->
+      <div class="topnav__brand">
+        <span class="topnav__logo-dot" aria-hidden="true"></span>
+        <span class="topnav__brand-name">Neighbourhood</span>
+      </div>
+
+      <!-- Greeting + Badge (center on desktop) -->
+      <div class="topnav__greeting">
+        <h1 class="topnav__hi">Hi <span id="headerName">…</span></h1>
+        <span id="headerBadge" class="badge-chip badge-chip--gold" aria-label="Trust badge">Gold 🥇</span>
+      </div>
+
+      <!-- Controls -->
+      <div class="topnav__controls">
+
+        <!-- Available toggle -->
+        <label class="avail-toggle" for="availToggle" title="Toggle availability for helping neighbors">
+          <span class="avail-toggle__label">Available</span>
+          <div class="switch">
+            <input type="checkbox" id="availToggle" role="switch"
+                   aria-label="Toggle helper availability"
+                   onchange="onAvailableToggle(this.checked)" />
+            <span class="switch__slider"></span>
+          </div>
+          <span class="avail-toggle__state" id="availState">ON</span>
+        </label>
+
+        <!-- Notification Bell -->
+        <div class="notif-wrap">
+          <button class="notif-btn" id="notifBtn" onclick="toggleNotifDropdown()"
+                  aria-label="Open notifications" aria-haspopup="true" aria-expanded="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+            <span class="notif-badge" id="notifBadge" aria-live="polite">0</span>
+          </button>
+
+          <!-- Dropdown -->
+          <div class="notif-dropdown" id="notifDropdown" role="dialog" aria-label="Notifications">
+            <div class="notif-dropdown__header">
+              <span class="notif-dropdown__title">Notifications</span>
+              <button class="notif-dropdown__mark-all" onclick="markAllRead()">Mark all read</button>
+            </div>
+            <div class="notif-list" id="notifList" aria-live="polite">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       MAIN
+  ════════════════════════════════════════════════════════════ -->
+  <main class="main" id="main">
+
+    <!-- 3. STAT CARDS -->
+    <section aria-label="Your statistics">
+      <div class="stats-grid" id="statsGrid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- 4. TWO-COLUMN WORKSPACE -->
+    <div class="workspace">
+
+      <!-- ── LEFT COLUMN ──────────────────────────────────── -->
+      <div class="left-col">
+
+        <!-- Tab bar -->
+        <div class="tab-bar" role="tablist">
+          <div class="tabs">
+            <button class="tab-btn active" id="tabBtn-asked"
+                    role="tab" aria-selected="true"
+                    onclick="switchTab('asked')" aria-controls="requestsList">
+              I asked
+              <span class="count" id="tabCountAsked">0</span>
+            </button>
+            <button class="tab-btn" id="tabBtn-helping"
+                    role="tab" aria-selected="false"
+                    onclick="switchTab('helping')" aria-controls="requestsList">
+              I'm helping
+              <span class="count" id="tabCountHelping">0</span>
+            </button>
+          </div>
+          <button class="post-btn" aria-label="Post a new help request"
+                  onclick="showToast('📝','Post Request','Neighborhood dispatch form opened. Describe your need and set urgency.')">
+            + Post Request
+          </button>
+        </div>
+
+        <!-- Requests list -->
+        <div class="requests-list" id="requestsList" role="tabpanel" aria-label="Active requests">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Past Requests Accordion -->
+        <div class="past-accordion" id="pastAccordion">
+          <button class="past-accordion__trigger"
+                  onclick="togglePastAccordion()"
+                  aria-expanded="false"
+                  aria-controls="pastAccordionBody">
+            <div class="past-accordion__left">
+              <span>Past Requests</span>
+              <span class="past-accordion__subtitle">Last 5</span>
+            </div>
+            <svg class="past-accordion__chevron" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                 stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <div class="past-accordion__body" id="pastAccordionBody">
+            <div id="pastList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /left-col -->
+
+      <!-- ── RIGHT COLUMN ─────────────────────────────────── -->
+      <aside class="right-col" aria-label="Trust score and suggestions">
+
+        <!-- Trust Score Panel -->
+        <div class="panel trust-panel">
+          <div class="panel__head">
+            <div>
+              <div class="panel__title">Your Trust Score</div>
+              <div class="panel__sub">Built through verified neighborhood activity</div>
+            </div>
+            <span id="trustBadgePill" class="badge-chip badge-chip--gold">Gold 🥇</span>
+          </div>
+          <div class="panel__body">
+            <div id="trustBars">
+              <!-- Rendered by JS -->
+            </div>
+            <div class="trust-tip">
+              <span class="trust-tip__icon" aria-hidden="true">💡</span>
+              <span class="trust-tip__text" id="trustTip">Loading tip…</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suggested For You Panel -->
+        <div class="panel">
+          <div class="panel__head">
+            <div>
+              <div class="panel__title">Suggested For You</div>
+              <div class="panel__sub">Nearby matches based on your skills</div>
+            </div>
+            <span class="chip chip--cat">Nearby</span>
+          </div>
+          <div class="panel__body" style="padding-top:16px;">
+            <div id="suggestedList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Dev / Backend Mode Card -->
+        <div class="dev-mode-card" role="region" aria-label="Developer mode settings">
+          <div>
+            <div class="dev-mode-card__label">Backend Mode</div>
+            <div class="dev-mode-card__status" id="devModeStatus">Mock Data — Active</div>
+          </div>
+          <button class="dev-mode-card__btn" id="devModeBtn"
+                  onclick="toggleMockMode()"
+                  aria-label="Toggle between mock data and live API">
+            Switch to Live API
+          </button>
+        </div>
+
+      </aside><!-- /right-col -->
+
+    </div><!-- /workspace -->
+  </main>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TOAST NOTIFICATION
+  ════════════════════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true">
+    <span class="toast__icon" id="toastIcon">💬</span>
+    <div class="toast__body">
+      <div class="toast__title" id="toastTitle"></div>
+      <div class="toast__msg" id="toastMsg"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
