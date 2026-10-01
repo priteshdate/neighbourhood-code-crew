@@ -1,0 +1,196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | Neighbourhood</title>
+
+    <link rel="stylesheet" href="../CSS/Signup.css">
+</head>
+
+<body>
+    <div class="map-background"></div>
+    <div class="signup-container">
+
+        <div class="signup-card">
+
+            <div class="logo">
+                <span>Neighbourhood</span>
+            </div>
+
+            <h1>Create Account</h1>
+
+            <p class="subtitle">
+                Join your local neighbourhood community
+            </p>
+
+            <form id="signupForm">
+
+                <!-- User ID -->
+                <div class="form-group">
+                    <label for="user_id">User ID</label>
+
+                    <input
+                        type="number"
+                        id="user_id"
+                        name="user_id"
+                        placeholder="Enter your user ID"
+                        required
+                    >
+                </div>
+
+                <!-- Name -->
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        placeholder="Enter your full name"
+                        maxlength="100"
+                        required
+                    >
+                </div>
+
+                <!-- Email -->
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="Enter your email"
+                        maxlength="150"
+                        required
+                    >
+                </div>
+
+                <!-- Password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Create a password"
+                        minlength="6"
+                        required
+                    >
+                </div>
+
+                <!-- Role -->
+                <div class="form-group">
+                    <label for="role">Role</label>
+
+                    <select id="role" name="role">
+
+                        <option value="resident">
+                            Resident
+                        </option>
+
+                        <option value="volunteer">
+                            Volunteer
+                        </option>
+
+                        <option value="both" selected>
+                            Both
+                        </option>
+
+                    </select>
+                </div>
+
+                <!-- Location -->
+                <div class="location-section">
+
+                    <div class="location-heading">
+                        <span class="location-icon">📍</span>
+
+                        <div>
+                            <h3>Neighbourhood Location</h3>
+
+                            <p id="locationStatus">
+                                Location not detected
+                            </p>
+                        </div>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="locationButton"
+                        class="location-button"
+                    >
+                        Detect My Location
+                    </button>
+
+                    <div class="coordinates">
+
+                        <div>
+                            <span>Latitude</span>
+                            <strong id="latitude">—</strong>
+                        </div>
+
+                        <div>
+                            <span>Longitude</span>
+                            <strong id="longitude">—</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Terms -->
+                <div class="terms">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        required
+                    >
+
+                    <label for="terms">
+                        I agree to the terms and conditions
+                    </label>
+
+                </div>
+
+                <!-- Submit -->
+                <button
+                    type="submit"
+                    id="signupButton"
+                    class="signup-button"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+            <!-- Message -->
+            <div
+                id="message"
+                class="message"
+            ></div>
+
+            <!-- Login -->
+            <p class="login-text">
+
+                Already have an account?
+
+                <a href="login.html">
+                    Login
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="../JS/Signup.js"></script>
+
+</body>
+</html>

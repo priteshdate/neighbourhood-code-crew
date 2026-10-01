@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Neighbourhood</title>
+
+    <link rel="stylesheet" href="../CSS/Login.css">
+</head>
+
+<body>
+    <div class="map-background"></div>
+    <div class="login-page">
+
+        <div class="login-card">
+
+            <div class="logo">
+                <span class="logo-dot"></span>
+                Neighbourhood
+            </div>
+
+            <h1>Welcome Back</h1>
+
+            <p class="subtitle">
+                Help your neighbourhood. Get help when you need it.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="form-group">
+
+                    <label for="user_id">
+                        User ID
+                    </label>
+
+                    <input
+                        type="number"
+                        id="user_id"
+                        name="user_id"
+                        placeholder="Enter your user ID"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                    class="login-button"
+                >
+                    Login
+                </button>
+
+            </form>
+
+
+            <div
+                id="loginMessage"
+                class="message"
+            ></div>
+
+
+            <p class="signup-text">
+
+                Don't have an account?
+
+                <a href="signup.html">
+                    Create an account
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <script src="../JS/Login.js"></script>
+
+</body>
+
+</html>
+```

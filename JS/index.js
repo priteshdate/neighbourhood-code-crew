@@ -55,8 +55,7 @@ const notificationText =
 const notificationClose =
     document.getElementById("notificationClose");
 
-const exploreBtn =
-    document.getElementById("exploreBtn");
+
 
 
 /* -----------------------------------------
@@ -279,17 +278,36 @@ notificationClose.addEventListener(
    EXPLORE BUTTON
 ----------------------------------------- */
 
-exploreBtn.addEventListener(
-    "click",
-    () => {
+const exploreBtn =
+    document.getElementById("exploreBtn");
 
-        alert(
-            "Neighbourhood exploration will open here."
-        );
+if (exploreBtn) {
 
-    }
-);
+    exploreBtn.addEventListener(
+        "click",
+        function () {
 
+            const section =
+                document.getElementById("explore");
+
+            if (!section) {
+
+                console.error(
+                    "Explore section not found."
+                );
+
+                return;
+            }
+
+            section.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+    );
+
+}
 
 /* -----------------------------------------
    START ANIMATION
@@ -408,3 +426,4 @@ viewActivityBtn.addEventListener(
 
     }
 );
+
