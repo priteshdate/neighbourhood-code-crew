@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Neighbourhood</title>
+
+<link rel="stylesheet" href="./CSS/index.css"></head>
+
+<body>
+
+    <!-- MAP BACKGROUND -->
+    <div class="map-background"></div>
+
+    <!-- LIGHT OVERLAY -->
+    <div class="map-overlay"></div>
+
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+
+        <div class="logo">
+            <span class="logo-dot"></span>
+            Neighbourhood
+        </div>
+
+        <button class="login-btn">
+            Login
+        </button>
+
+    </header>
+
+
+    <!-- HERO CONTENT -->
+    <main class="hero">
+
+        <section class="hero-content">
+
+            <div class="eyebrow">
+                YOUR COMMUNITY • YOUR VOICE
+            </div>
+
+            <h1>
+                Your neighbourhood
+                <span>Your Community.</span>
+            </h1>
+
+            <p>
+                Stay informed. Speak up. Connect with the people
+                and places around you.
+            </p>
+
+            <button class="explore-btn" id="exploreBtn">
+                Explore Neighbourhood
+                <span>→</span>
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+     NEIGHBOURHOOD ACTIVITY
+========================================= -->
+
+<section class="activity-section">
+
+    <div class="section-heading">
+
+        <div>
+            <span class="section-label">
+                LIVE FROM YOUR AREA
+            </span>
+
+            <h2>
+                What's happening
+                <span>around you?</span>
+            </h2>
+        </div>
+
+        <p>
+            Stay updated with what's happening
+            in your neighbourhood.
+        </p>
+
+    </div>
+
+
+    <!-- FILTERS -->
+
+    <div class="activity-filters">
+
+        <button class="filter-btn active" data-filter="all">
+            All
+        </button>
+
+        <button class="filter-btn" data-filter="issue">
+            Issues
+        </button>
+
+        <button class="filter-btn" data-filter="event">
+            Events
+        </button>
+
+        <button class="filter-btn" data-filter="update">
+            Updates
+        </button>
+
+    </div>
+
+
+    <!-- ACTIVITY CARDS -->
+
+    <div class="activity-grid" id="activityGrid">
+
+
+        <!-- CARD 1 -->
+
+        <article class="activity-card" data-category="issue">
+
+            <div class="card-top">
+
+                <span class="category issue">
+                    ● Issue
+                </span>
+
+                <span class="time">
+                    12 min ago
+                </span>
+
+            </div>
+
+            <h3>
+                Pothole reported near Station Road
+            </h3>
+
+            <p>
+                A damaged section of road has been
+                reported by a nearby resident.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="location">
+                    📍 Station Road
+                </span>
+
+                <span class="status reported">
+                    Reported
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 2 -->
+
+        <article class="activity-card" data-category="event">
+
+            <div class="card-top">
+
+                <span class="category event">
+                    ● Event
+                </span>
+
+                <span class="time">
+                    Tomorrow
+                </span>
+
+            </div>
+
+            <h3>
+                Community Clean-up Drive
+            </h3>
+
+            <p>
+                Residents are coming together to
+                clean and improve the local area.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="location">
+                    📍 Central Park
+                </span>
+
+                <span class="status upcoming">
+                    9:00 AM
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 3 -->
+
+        <article class="activity-card" data-category="update">
+
+            <div class="card-top">
+
+                <span class="category update">
+                    ● Update
+                </span>
+
+                <span class="time">
+                    1 hr ago
+                </span>
+
+            </div>
+
+            <h3>
+                Streetlight issue resolved
+            </h3>
+
+            <p>
+                The broken streetlight reported last
+                week has now been repaired.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="location">
+                    📍 MG Road
+                </span>
+
+                <span class="status resolved">
+                    Resolved
+                </span>
+
+            </div>
+
+        </article>
+
+
+        <!-- CARD 4 -->
+
+        <article class="activity-card" data-category="issue">
+
+            <div class="card-top">
+
+                <span class="category issue">
+                    ● Issue
+                </span>
+
+                <span class="time">
+                    2 hrs ago
+                </span>
+
+            </div>
+
+            <h3>
+                Water supply interruption
+            </h3>
+
+            <p>
+                Residents have reported an unexpected
+                interruption in the local water supply.
+            </p>
+
+            <div class="card-bottom">
+
+                <span class="location">
+                    📍 Green Avenue
+                </span>
+
+                <span class="status reported">
+                    Monitoring
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="activity-more">
+
+        <button id="viewActivityBtn">
+            View all activity
+            <span>→</span>
+        </button>
+
+    </div>
+
+</section>
+
+    <!-- RANDOM LOCATION PINS WILL APPEAR HERE -->
+    <div id="mapPins"></div>
+
+
+    <!-- NOTIFICATION -->
+    <div class="notification" id="notification">
+
+        <div class="notification-icon">
+            <span></span>
+        </div>
+
+        <div class="notification-content">
+            <div class="notification-title" id="notificationTitle">
+                New update nearby
+            </div>
+
+            <div class="notification-text" id="notificationText">
+                Something happened in your neighbourhood.
+            </div>
+        </div>
+
+        <button class="notification-close" id="notificationClose">
+            ×
+        </button>
+
+    </div>
+    <!-- =========================================
+     WHY US
+========================================= -->
+
+<section class="why-section">
+
+    <div class="why-heading">
+
+        <div>
+
+            <span class="section-label">
+                WHY NEIGHBOURHOOD?
+            </span>
+
+            <h2>
+                A better way to
+                <span>know your neighbourhood.</span>
+            </h2>
+
+        </div>
+
+        <p>
+            Your neighbourhood already has a community.
+            We bring the people, information and issues
+            together in one place.
+        </p>
+
+    </div>
+
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <div class="why-icon">📍</div>
+
+            <h3>
+                Everything Nearby
+            </h3>
+
+            <p>
+                Discover local issues, events, updates
+                and useful places around you.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">📢</div>
+
+            <h3>
+                Your Voice Matters
+            </h3>
+
+            <p>
+                Report problems and bring attention to
+                issues that affect your community.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">⚡</div>
+
+            <h3>
+                Stay Informed
+            </h3>
+
+            <p>
+                Get important neighbourhood updates
+                without searching across multiple platforms.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">👥</div>
+
+            <h3>
+                Community Driven
+            </h3>
+
+            <p>
+                Residents aren't just users. They actively
+                help shape their neighbourhood.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">🔎</div>
+
+            <h3>
+                Local Focus
+            </h3>
+
+            <p>
+                Focus on what matters around you instead
+                of getting lost in city-wide information.
+            </p>
+
+        </div>
+
+
+        <div class="why-card">
+
+            <div class="why-icon">✓</div>
+
+            <h3>
+                Track Progress
+            </h3>
+
+            <p>
+                Follow reported issues and see how your
+                neighbourhood is improving.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     HOW IT WORKS
+========================================= -->
+
+<section class="how-section">
+
+    <span class="section-label">
+        HOW IT WORKS
+    </span>
+
+    <h2>
+        See. Report. Connect.
+        <span>Improve.</span>
+    </h2>
+
+
+    <div class="steps">
+
+        <div class="step">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                See
+            </h3>
+
+            <p>
+                Discover what's happening around
+                your neighbourhood.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                Report
+            </h3>
+
+            <p>
+                Report local issues that need
+                attention.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                Connect
+            </h3>
+
+            <p>
+                Stay connected with people
+                in your community.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>
+                Improve
+            </h3>
+
+            <p>
+                Turn awareness into meaningful
+                neighbourhood action.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- =========================================
+     FINAL CTA
+========================================= -->
+
+<section class="final-cta">
+
+    <div>
+
+        <span class="section-label">
+            YOUR COMMUNITY. YOUR VOICE.
+        </span>
+
+        <h2>
+            Your neighbourhood
+            <span>starts with you.</span>
+        </h2>
+
+        <p>
+            Explore what's happening around you
+            and become part of the community.
+        </p>
+
+        <button class="cta-btn">
+            Explore Neighbourhood
+            <span>→</span>
+        </button>
+
+    </div>
+
+</section>
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer class="site-footer">
+
+    <div class="footer-main">
+
+        <div class="footer-brand">
+
+            <a href="#" class="footer-logo">
+
+                <span class="logo-dot"></span>
+
+                Neighbourhood
+
+            </a>
+
+            <p>
+                Connecting people with the places
+                and communities around them.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Explore
+            </h4>
+
+            <a href="#">
+                Home
+            </a>
+
+            <a href="#">
+                Activity
+            </a>
+
+            <a href="#">
+                Explore
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Community
+            </h4>
+
+            <a href="#">
+                Report an Issue
+            </a>
+
+            <a href="#">
+                Events
+            </a>
+
+            <a href="#">
+                Updates
+            </a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>
+                Account
+            </h4>
+
+            <a href="#">
+                Login
+            </a>
+
+            <a href="#">
+                Sign Up
+            </a>
+
+            <a href="#">
+                Help
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <span>
+            © 2026 Neighbourhood
+        </span>
+
+        <span>
+            Built for better communities.
+        </span>
+
+    </div>
+
+</footer>
+
+<script src="./JS/index.js"></script>
+</body>
+</html>
